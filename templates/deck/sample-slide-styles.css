@@ -1,0 +1,2 @@
+/* Slide-specific additions use tokens only. */
+.slide[data-n="5"] > h1 { color: var(--primary-text); }

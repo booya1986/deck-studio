@@ -1,0 +1,55 @@
+{
+  "name": "deck-studio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "studio": "tsx scripts/studio.ts",
+    "wizard": "tsx scripts/setup-wizard.ts",
+    "checkup": "tsx scripts/setup-wizard.ts --check",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "fixture": "tsx scripts/make-fixture.ts",
+    "extract": "tsx scripts/extract.ts",
+    "ds:emit": "tsx scripts/ds-emit.ts",
+    "deck:assemble": "tsx scripts/assemble-deck.ts",
+    "deck:qa": "tsx scripts/qa-deck.ts",
+    "pipeline": "tsx scripts/pipeline.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.3.258",
+    "culori": "^4.0.2",
+    "fast-xml-parser": "^5.11.1",
+    "jszip": "^3.10.1",
+    "nanoid": "^6.0.1",
+    "next": "16.3.4",
+    "pdfjs-dist": "^6.3.289",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "sharp": "^0.35.4",
+    "zod": "^4.5.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/culori": "^4.0.1",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "docx": "^9.7.1",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.4",
+    "playwright": "^1.62.1",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.13",
+    "typescript": "^5",
+    "vitest": "^4.1.11"
+  },
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=22"
+  }
+}

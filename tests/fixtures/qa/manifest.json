@@ -1,0 +1,24 @@
+{
+  "namespace": "qa-fixture-ds",
+  "brand": { "name": "QA Fixture", "sourceFile": "fixture.docx", "language": "he" },
+  "mode": "light",
+  "tokens": [
+    { "name": "--bg", "value": "#f7f7fa", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--surface", "value": "#ffffff", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--text-1", "value": "#1a1a2e", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--text-2", "value": "#4b5563", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--primary", "value": "#1d4ed8", "kind": "color", "layer": "role", "provenance": "extracted" },
+    { "name": "--accent", "value": "#b45309", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--chart-1", "value": "#0e7490", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--border", "value": "#d1d5db", "kind": "color", "layer": "role", "provenance": "inferred" },
+    { "name": "--font-heading", "value": "Arial, sans-serif", "kind": "font", "layer": "role", "provenance": "user" },
+    { "name": "--font-body", "value": "Arial, sans-serif", "kind": "font", "layer": "role", "provenance": "user" }
+  ],
+  "brandFonts": [
+    { "role": "heading", "family": "Arial", "status": "system_fallback" },
+    { "role": "body", "family": "Arial", "status": "system_fallback" }
+  ],
+  "assets": { "images": [] },
+  "cards": [],
+  "globalCssPaths": []
+}

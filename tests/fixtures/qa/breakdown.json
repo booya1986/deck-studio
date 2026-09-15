@@ -1,0 +1,42 @@
+{
+  "title": "מצגת בדיקה למנוע ה-QA",
+  "slides": [
+    {
+      "n": 1,
+      "sectionId": "intro",
+      "layout": "title",
+      "title": "מצגת בדיקה למנוע ה-QA",
+      "keyMessage": "שקף פתיחה נקי",
+      "body": ["שקף פתיחה נקי: כל הצבעים מגיעים מטוקנים"],
+      "visual": { "type": "none", "spec": "" },
+      "speakerNotes": "",
+      "claimIds": [],
+      "confidence": 1
+    },
+    {
+      "n": 2,
+      "sectionId": "principles",
+      "layout": "cards",
+      "title": "שלושה עקרונות לעבודה נכונה",
+      "keyMessage": "שלושה עקרונות",
+      "body": ["עקרון ראשון", "עקרון שני", "עקרון שלישי משפט תקין לחלוטין"],
+      "visual": { "type": "none", "spec": "" },
+      "speakerNotes": "",
+      "claimIds": [],
+      "confidence": 1
+    },
+    {
+      "n": 3,
+      "sectionId": "process",
+      "layout": "split",
+      "title": "הטמעת תהליך העבודה החדש",
+      "keyMessage": "הטמעה דורשת הבנה של כל שלב",
+      "body": ["הבנה מעמיקה של כל שלב בתהליך", "כל צוות נדרש להכיר את הנהלים ולתעד את ההחלטות"],
+      "visual": { "type": "none", "spec": "" },
+      "speakerNotes": "",
+      "claimIds": [],
+      "confidence": 1
+    }
+  ],
+  "revisionLog": []
+}

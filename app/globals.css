@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+:root {
+  --app-bg: #f6f7f9;
+  --app-surface: #ffffff;
+  --app-surface-2: #eef1f5;
+  --app-ink: #16191d;
+  --app-ink-2: #545c66;
+  --app-ink-3: #7d8794;
+  --app-line: #e2e6ec;
+  --app-line-strong: #cdd4dd;
+  --app-brand: #1f5fa8;
+  --app-brand-soft: #e8f0fa;
+  --app-ok: #146c3a;
+  --app-ok-soft: #e6f4ec;
+  --app-warn: #9a5b00;
+  --app-warn-soft: #fdf3e3;
+  --app-err: #a51f1f;
+  --app-err-soft: #fbeaea;
+  --app-radius: 12px;
+}
+
+@theme inline {
+  --color-bg: var(--app-bg);
+  --color-surface: var(--app-surface);
+  --color-surface-2: var(--app-surface-2);
+  --color-ink: var(--app-ink);
+  --color-ink-2: var(--app-ink-2);
+  --color-ink-3: var(--app-ink-3);
+  --color-line: var(--app-line);
+  --color-line-strong: var(--app-line-strong);
+  --color-brand: var(--app-brand);
+  --color-brand-soft: var(--app-brand-soft);
+  --color-ok: var(--app-ok);
+  --color-ok-soft: var(--app-ok-soft);
+  --color-warn: var(--app-warn);
+  --color-warn-soft: var(--app-warn-soft);
+  --color-err: var(--app-err);
+  --color-err-soft: var(--app-err-soft);
+  --font-sans: var(--font-heebo), "Arial Hebrew", Arial, system-ui, sans-serif;
+}
+
+body {
+  background: var(--app-bg);
+  color: var(--app-ink);
+}
+
+/* Technical strings (paths, hex, token names) must not reorder inside RTL text. */
+.ltr {
+  direction: ltr;
+  unicode-bidi: isolate;
+  text-align: left;
+}
+
+.card {
+  background: var(--app-surface);
+  border: 1px solid var(--app-line);
+  border-radius: var(--app-radius);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 14px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, opacity .15s;
+}
+.btn-primary { background: var(--app-brand); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: #17497f; }
+.btn-ghost { background: transparent; color: var(--app-ink-2); border-color: var(--app-line-strong); }
+.btn-ghost:hover:not(:disabled) { background: var(--app-surface-2); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.field {
+  width: 100%;
+  border: 1px solid var(--app-line-strong);
+  border-radius: 10px;
+  padding: 9px 12px;
+  font: inherit;
+  background: var(--app-surface);
+  color: var(--app-ink);
+}
+.field:focus { outline: 2px solid var(--app-brand); outline-offset: -1px; }
+
+.label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: var(--app-ink-2); }

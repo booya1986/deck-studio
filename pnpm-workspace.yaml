@@ -1,0 +1,7 @@
+onlyBuiltDependencies:
+  - sharp
+  - esbuild
+  - playwright
+  - "@anthropic-ai/claude-agent-sdk"
+ignoredBuiltDependencies:
+  - unrs-resolver
