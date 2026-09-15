@@ -4,7 +4,7 @@
 
 <br>
 
-![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white) ![Claude Agent SDK](https://img.shields.io/badge/Claude-Agent%20SDK-D97757?logo=anthropic&logoColor=white) ![Hebrew RTL](https://img.shields.io/badge/Hebrew-RTL-1f6feb) ![Platforms](https://img.shields.io/badge/macOS%20·%20Linux%20·%20WSL-supported-555)
+![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white) ![Claude Agent SDK](https://img.shields.io/badge/Claude-Agent%20SDK-D97757?logo=anthropic&logoColor=white) ![Hebrew RTL](https://img.shields.io/badge/Hebrew-RTL-1f6feb) ![Platforms](https://img.shields.io/badge/macOS%20·%20Linux%20·%20WSL-supported-555) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 <h3 dir="rtl">מעלים מסמך. מאשרים חמישה שלבים. מקבלים מצגת הדרכה.</h3>
 
@@ -197,5 +197,10 @@ pnpm studio
 ## למפתחים
 
 מבנה הקוד, הפקודות, מדידות זמן ועלות והחלטות תכנון נמצאים בקובץ [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+
+## רישיון
+
+הקוד פתוח תחת רישיון [MIT](LICENSE). מותר להשתמש, לשנות ולהפיץ, גם לשימוש מסחרי, בתנאי ששומרים את הודעת הרישיון.
+ספריית האנימציה GSAP שמגיעה עם המצגות כפופה לרישיון משלה, והפרטים בקובץ [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 </div>
