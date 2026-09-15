@@ -4,11 +4,7 @@
 
 <br>
 
-![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white)
-![Claude Agent SDK](https://img.shields.io/badge/Claude-Agent%20SDK-D97757?logo=anthropic&logoColor=white)
-![Hebrew RTL](https://img.shields.io/badge/עברית-RTL-1f6feb)
-![Platforms](https://img.shields.io/badge/macOS%20·%20Linux%20·%20WSL-supported-555)
+![Node.js 22+](https://img.shields.io/badge/Node.js-22%2B-339933?logo=node.js&logoColor=white) ![Next.js](https://img.shields.io/badge/Next.js-16-000000?logo=next.js&logoColor=white) ![Claude Agent SDK](https://img.shields.io/badge/Claude-Agent%20SDK-D97757?logo=anthropic&logoColor=white) ![Hebrew RTL](https://img.shields.io/badge/Hebrew-RTL-1f6feb) ![Platforms](https://img.shields.io/badge/macOS%20·%20Linux%20·%20WSL-supported-555)
 
 <h3 dir="rtl">מעלים מסמך. מאשרים חמישה שלבים. מקבלים מצגת הדרכה.</h3>
 
@@ -28,7 +24,7 @@
 
 ## מה זה
 
-Deck Studio הופך מסמך ארגוני אחד, PDF, Word או PowerPoint, למצגת הדרכה ממותגת בעברית.
+המערכת Deck Studio הופכת מסמך ארגוני אחד, מסוג PDF, Word או PowerPoint, למצגת הדרכה ממותגת בעברית.
 צוות סוכני Claude מחלץ את השפה העיצובית מהמסמך, בונה מטרות למידה, בודק כל עובדה מול המקור, כותב את השקפים ומבקר אותם בדפדפן.
 **אתם נשארים בשליטה:** כל שלב נעצר, מציג לכם את התוצר, וממשיך רק אחרי אישור.
 
@@ -105,11 +101,11 @@ flowchart RL
 
 **מה צריך לפני שמתחילים**
 
-- 💻 **Mac או Linux.** ב־Windows עובדים דרך WSL.
-- 🟩 **Node.js 22 ומעלה**, מ־[nodejs.org](https://nodejs.org). ב־Mac אפשר גם `brew install node@22`.
-- 🔑 **חיבור ל־Claude**, אחת משתי האפשרויות:
-  - **מפתח API** מ־[console.anthropic.com](https://console.anthropic.com). משלמים לפי שימוש, ומתאים לצוותים.
-  - **מנוי Claude Pro או Max**, דרך [Claude Code](https://claude.com/claude-code) שמחובר במחשב.
+- 💻 **מחשב Mac או Linux.** במחשב Windows עובדים דרך WSL.
+- 🟩 **גרסת Node.js 22 ומעלה.** מורידים מהאתר [nodejs.org](https://nodejs.org), או במחשב Mac מריצים `brew install node@22`.
+- 🔑 **חיבור לשירות Claude**, באחת משתי דרכים:
+  - **מפתח API** מהאתר [console.anthropic.com](https://console.anthropic.com). משלמים לפי שימוש, ומתאים לצוותים.
+  - **מנוי Claude Pro או Max**, דרך תוכנת [Claude Code](https://claude.com/claude-code) שמחוברת במחשב.
 
 **שלוש פקודות**
 
@@ -128,13 +124,12 @@ cd deck-studio
 | | האשף בודק | ואם חסר |
 |:-:|---|---|
 | 1 | גרסת Node | מסביר מאיפה להוריד |
-| 2 | כלי PDF (poppler) | מציע להתקין ב־Mac, ונותן פקודה ב־Linux |
-| 3 | דפדפן לבדיקת המצגות | מוריד אותו, פעם אחת, כ־100MB |
-| 4 | חיבור ל־Claude | מדביקים מפתח API או בוחרים מנוי, ובודקים בבקשה זעירה |
+| 2 | כלים לקריאת PDF | מציע להתקין במחשב Mac, ונותן פקודה מוכנה במחשב Linux |
+| 3 | דפדפן לבדיקת המצגות | מוריד אותו פעם אחת, בערך 100 מגה |
+| 4 | חיבור לשירות Claude | מדביקים מפתח API או בוחרים מנוי, ובודקים בבקשה זעירה |
 | 5 | פורט פנוי | בוחר לבד את הבא בתור |
 
-> [!NOTE]
-> מפתח ה־API נשמר רק אצלכם, בקובץ `.env.local` שקריא רק לכם, ו־git מתעלם ממנו. אין בריפו הזה שום מפתח.
+> **🔒 שימו לב:** המפתח נשמר רק במחשב שלכם, בקובץ `.env.local` שרק אתם יכולים לקרוא. הקובץ הזה לא עולה לריפו, ואין בריפו שום מפתח.
 
 **בפעם הבאה** מספיק:
 
@@ -156,24 +151,20 @@ pnpm studio
 
 ## פרטיות
 
-- 🗂️ המסמכים והמצגות נשמרים רק במחשב שלכם, בתיקייה `data/projects`, ולא עולים ל־git.
-- ☁️ תוכן המסמך נשלח ל־Claude לעיבוד.
+- 🗂️ המסמכים והמצגות נשמרים רק במחשב שלכם, בתיקייה `data/projects`, ולא עולים לריפו.
+- ☁️ תוכן המסמך נשלח לשירות Claude לעיבוד.
 - 🌐 בשלב המחקר הסוכן מחפש ברשת לפי נושאי המסמך.
 
 ## כשמשהו לא עובד
 
-</div>
-
-```bash
-pnpm checkup          # בודק הכל בלי לשאול שאלות
-pnpm checkup --test   # וגם שולח בקשת בדיקה זעירה ל-Claude
-pnpm wizard           # מריץ את האשף שוב ומתקן
-```
-
-<div dir="rtl">
+| פקודה | מה היא עושה |
+|---|---|
+| `pnpm checkup` | בודקת הכל, בלי לשאול שאלות |
+| `pnpm checkup --test` | בודקת, וגם שולחת בקשת בדיקה זעירה לשירות Claude |
+| `pnpm wizard` | מריצה את האשף שוב ומתקנת |
 
 <details>
-<summary><b>"Deck Studio לא מחובר ל־Claude, או שהמפתח לא תקין"</b></summary>
+<summary><b>"Deck Studio לא מחובר לשירות Claude, או שהמפתח לא תקין"</b></summary>
 <br>
 מריצים <code>pnpm wizard</code>, בוחרים מחדש מפתח API או מנוי, ומריצים את השלב שוב.
 </details>
@@ -185,9 +176,9 @@ pnpm wizard           # מריץ את האשף שוב ומתקן
 </details>
 
 <details>
-<summary><b>החילוץ מ־PDF נכשל</b></summary>
+<summary><b>חילוץ הטקסט מקובץ PDF נכשל</b></summary>
 <br>
-חסרים כלי ה־PDF. ב־Mac: <code>brew install poppler</code>. ב־Linux: <code>sudo apt-get install -y poppler-utils</code>.
+חסרים הכלים לקריאת PDF. במחשב Mac מריצים <code>brew install poppler</code>, ובמחשב Linux מריצים <code>sudo apt-get install -y poppler-utils</code>.
 </details>
 
 <details>
@@ -204,6 +195,6 @@ pnpm wizard           # מריץ את האשף שוב ומתקן
 
 ## למפתחים
 
-מבנה הקוד, הפקודות, מדידות זמן ועלות והחלטות תכנון נמצאים ב־[docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+מבנה הקוד, הפקודות, מדידות זמן ועלות והחלטות תכנון נמצאים בקובץ [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
 </div>

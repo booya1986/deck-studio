@@ -191,13 +191,13 @@ export function describeRunError(e: unknown): string {
   const limit = raw.match(/(?:session|usage) limit[^·]*·\s*resets\s*([^\n(]+)/i);
   if (limit || /session limit|usage limit/i.test(raw)) {
     const at = limit?.[1]?.trim();
-    return `נגמרה מכסת השימוש של Claude${at ? `; היא מתאפסת ב־${at}` : ""}. אפשר להריץ מחדש אחרי האיפוס, או להגדיר ANTHROPIC_API_KEY בקובץ .env.local כדי להמשיך מיד על חשבון מפתח API.`;
+    return `נגמרה מכסת השימוש של Claude${at ? `, והיא מתאפסת בשעה ${at}` : ""}. אפשר להריץ את השלב שוב אחרי האיפוס, או לחבר מפתח API עם הפקודה pnpm wizard כדי להמשיך מיד.`;
   }
   if (/credit balance is too low/i.test(raw)) {
-    return "אין מספיק יתרה בחשבון ה־API של Anthropic. אפשר להטעין יתרה ב־console.anthropic.com ולהריץ מחדש.";
+    return "אין מספיק יתרה בחשבון API של Anthropic. אפשר להטעין יתרה באתר console.anthropic.com ולהריץ את השלב שוב.";
   }
   if (/invalid (x-)?api[ -]?key|authentication_error|\b401\b|not logged in|please run \/login|oauth token/i.test(raw)) {
-    return "Deck Studio לא מחובר ל־Claude, או שהמפתח לא תקין. הריצו בטרמינל pnpm wizard כדי לחבר מחדש, ואז הריצו את השלב שוב.";
+    return "Deck Studio לא מחובר לשירות Claude, או שהמפתח לא תקין. כדי לחבר מחדש, הריצו בטרמינל את הפקודה pnpm wizard, ואז הריצו את השלב שוב.";
   }
   return `הסוכן נכשל: ${raw}`;
 }
