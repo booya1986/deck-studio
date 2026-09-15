@@ -1,5 +1,6 @@
 import { emitterFor, runningJob } from "@/lib/runner/runner";
 import { tailRunEvents, type RunEvent } from "@/lib/store/runlog";
+import { isValidProjectId } from "@/lib/store/paths";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -8,6 +9,7 @@ export const maxDuration = 3600;
 /** Replay the recent log, then stream live events for this project. */
 export async function GET(request: Request, ctx: RouteContext<"/api/projects/[id]">) {
   const { id } = await ctx.params;
+  if (!isValidProjectId(id)) return new Response("not found", { status: 404 });
   const encoder = new TextEncoder();
   const emitter = emitterFor(id);
 

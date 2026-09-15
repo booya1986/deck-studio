@@ -43,17 +43,21 @@ async function main() {
   const wanted = Number(process.env.PORT) || 3000;
   const port = await firstFreePort(wanted);
   if (port !== wanted) console.log(`Port ${wanted} is busy; using ${port}.`);
+  // Localhost only. The app has no login: anyone who can reach it can read your
+  // projects and spend your Claude usage. Set HOST=0.0.0.0 only on a network you trust.
+  const host = process.env.HOST || "127.0.0.1";
   const url = `http://localhost:${port}`;
+  const probe = `http://${host === "0.0.0.0" || host === "::" ? "127.0.0.1" : host}:${port}`;
 
   const next = spawn(
     path.join(REPO_ROOT, "node_modules", ".bin", isWin ? "next.cmd" : "next"),
-    ["dev", "-p", String(port)],
+    ["dev", "-H", host, "-p", String(port)],
     { stdio: "inherit", cwd: REPO_ROOT, env: { ...process.env, PORT: String(port) }, shell: isWin },
   );
   next.on("exit", (code) => process.exit(code ?? 0));
   for (const signal of ["SIGINT", "SIGTERM"] as const) process.on(signal, () => next.kill(signal));
 
-  if (await waitForHttp(url, 120_000)) {
+  if (await waitForHttp(probe, 120_000)) {
     console.log(`\n  Deck Studio is running at ${url}  (Ctrl+C to stop)\n`);
     if (!process.argv.includes("--no-open")) openBrowser(url);
   }

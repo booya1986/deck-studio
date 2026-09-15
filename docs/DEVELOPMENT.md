@@ -88,7 +88,7 @@ before dying on a usage limit:
 | `pnpm wizard` | interactive checks and fixes: PDF tools, headless browser, Claude connection, port |
 | `pnpm checkup [--test]` | the same checks without questions; exit 1 when something is missing; `--test` sends one tiny request to Claude |
 | `pnpm studio [--no-open]` | start the app on `PORT` (default 3000, the next free port if busy) and open the browser |
-| `pnpm dev` | plain `next dev` on port 3000 |
+| `pnpm dev` | plain `next dev` on 127.0.0.1:3000 |
 | `pnpm fixture` | generate the dummy Hebrew org document used for testing (DOCX + PDF + logo) |
 | `pnpm extract <file> [outDir]` | run the deterministic extraction pass on a document |
 | `pnpm pipeline <file> [stage]` | run the pipeline from the CLI up to a stage, approving each gate automatically |
@@ -174,6 +174,18 @@ Four cuts are **written but not yet measured** — the measurement run died on a
 fix that cost $1.52 on slide 3. Re-run that gate and compare against $1.52 / 36 turns; the judge and
 research cuts need a fuller run. Restart the dev server before measuring — `loadPrompt` caches prompts
 in a module-level Map, so an edited prompt is not picked up by a server that was already running.
+
+## Security defaults
+
+- **Localhost only.** The app has no login, so `pnpm studio` and `pnpm dev` listen on 127.0.0.1. Anyone who
+  can reach the server can read every project and run agents on your Claude account. Set `HOST=0.0.0.0` for
+  `pnpm studio` only on a network you trust.
+- **Project ids are validated before they reach a path** (`isValidProjectId` in `lib/store/paths.ts`). Route
+  params arrive percent-decoded, and before this guard an id such as `..%2F..%2Fetc` read files outside the
+  data folder.
+- **The file route serves only real paths inside the project folder**, checked after resolving symlinks.
+- **No secrets in git.** `.env*` is ignored except the example file. GitHub secret scanning and push protection
+  are on for the public repository.
 
 ## Third-party files in the repository
 

@@ -11,7 +11,21 @@ export const TEMPLATES_DIR = path.join(REPO_ROOT, "templates", "deck");
 export const AGENT_DIR = path.join(REPO_ROOT, "agent");
 export const FIXTURES_DIR = path.join(REPO_ROOT, "fixtures");
 
+/**
+ * Project ids come from newProjectId: a date, an ASCII slug and random hex.
+ * Route params arrive percent-decoded, so an id like "..%2F..%2Fetc" becomes
+ * "../../etc". Every path built from an id goes through projectDir, and
+ * projectDir refuses anything that is not a plain id, so no request can reach
+ * a file outside the data folder.
+ */
+const PROJECT_ID = /^[A-Za-z0-9][A-Za-z0-9-]{0,99}$/;
+
+export function isValidProjectId(id: string): boolean {
+  return typeof id === "string" && PROJECT_ID.test(id);
+}
+
 export function projectDir(id: string) {
+  if (!isValidProjectId(id)) throw new Error("מזהה פרויקט לא חוקי");
   return path.join(DATA_DIR, id);
 }
 

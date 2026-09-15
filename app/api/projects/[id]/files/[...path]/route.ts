@@ -2,7 +2,7 @@ import { createReadStream } from "node:fs";
 import { promises as fs } from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
-import { projectDir } from "@/lib/store/paths";
+import { isValidProjectId, projectDir } from "@/lib/store/paths";
 import { fail } from "@/lib/api";
 
 export const runtime = "nodejs";
@@ -22,20 +22,27 @@ const MIME: Record<string, string> = {
   ".pdf": "application/pdf",
 };
 
+const inside = (root: string, target: string) => target === root || target.startsWith(root + path.sep);
+
 /** Serves project artifacts so the brand board and the deck can load in an iframe. */
 export async function GET(_request: Request, ctx: RouteContext<"/api/projects/[id]/files/[...path]">) {
   const { id, path: segments } = await ctx.params;
+  // Params arrive percent-decoded: "..%2F.." would otherwise walk out of the data folder.
+  if (!isValidProjectId(id)) return fail("לא נמצא", 404);
+
   const root = projectDir(id);
   const target = path.resolve(root, ...segments);
-
-  // Never serve outside the project folder, whatever the path segments say.
-  if (target !== root && !target.startsWith(root + path.sep)) return fail("נתיב לא חוקי", 400);
+  if (!inside(root, target)) return fail("נתיב לא חוקי", 400);
 
   try {
-    const stat = await fs.stat(target);
+    // Check again after resolving symlinks, so a link inside the project cannot point outside it.
+    const [realRoot, realTarget] = await Promise.all([fs.realpath(root), fs.realpath(target)]);
+    if (!inside(realRoot, realTarget)) return fail("נתיב לא חוקי", 400);
+
+    const stat = await fs.stat(realTarget);
     if (!stat.isFile()) return fail("לא נמצא", 404);
-    const type = MIME[path.extname(target).toLowerCase()] ?? "application/octet-stream";
-    const body = Readable.toWeb(createReadStream(target)) as ReadableStream<Uint8Array>;
+    const type = MIME[path.extname(realTarget).toLowerCase()] ?? "application/octet-stream";
+    const body = Readable.toWeb(createReadStream(realTarget)) as ReadableStream<Uint8Array>;
     return new Response(body, {
       headers: {
         "Content-Type": type,

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -H 127.0.0.1",
     "studio": "tsx scripts/studio.ts",
     "wizard": "tsx scripts/setup-wizard.ts",
     "checkup": "tsx scripts/setup-wizard.ts --check",
